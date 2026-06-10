@@ -17,8 +17,11 @@
             --white: #FFFFFF;
             --accent: #1E88E5;
             --gray: #757575;
+            --gray-light: #E0E0E0;
+            --gray-md: #9E9E9E;
             --border-radius: 8px;
             --transition: all 0.3s ease;
+            --box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         /* --- SUCESSO DO RESET E CONFIGURAÇÕES GERAIS --- */
@@ -139,6 +142,7 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            text-align: center;
         }
 
         .btn:hover {
@@ -150,6 +154,12 @@
             background-color: var(--primary);
         }
         .btn-secondary:hover {
+            background-color: var(--primary-dark);
+        }
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        .btn-primary:hover {
             background-color: var(--primary-dark);
         }
 
@@ -202,8 +212,8 @@
             font-size: 20px;
         }
 
-        /* --- FERRAMENTA INTERATIVA: CALCULADORA --- */
-        .calculator-box {
+        /* --- CONTAINER COMPARTILHADO PARA BOX INTERATIVOS --- */
+        .calculator-box, .interactive-section {
             background-color: var(--white);
             border-radius: var(--border-radius);
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -251,6 +261,39 @@
             color: var(--primary-dark);
             margin-bottom: 10px;
             font-size: 18px;
+        }
+
+        /* --- ESTILOS DO DIÁRIO DE BORDO --- */
+        .diary-item {
+            background-color: var(--white);
+            border: 1px solid var(--gray-light);
+            border-left: 5px solid var(--secondary);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            position: relative;
+            box-shadow: var(--box-shadow);
+        }
+
+        .diary-date {
+            font-size: 12px;
+            color: var(--gray-md);
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .btn-delete {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #EF5350;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-delete:hover {
+            text-decoration: underline;
         }
 
         /* --- FOOTER --- */
@@ -320,7 +363,7 @@
 
             .nav-menu.active {
                 display: flex;
-            }
+                }
 
             .menu-toggle {
                 display: flex;
@@ -338,27 +381,27 @@
 </head>
 <body>
 
-    <!-- NAV BAR -->
     <header>
         <div class="nav-container">
             <div class="logo">
                 🌱 AgroEco
             </div>
-            <div class="menu-toggle" id="mobile-menu">
+            <div class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul class="nav-menu" id="nav-list">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#" class="active">Início</a></li>
                 <li><a href="#praticas">Práticas Verdes</a></li>
                 <li><a href="#calculadora">Calculadora Eco</a></li>
-                <li><a href="#comunidade">Comunidade</a></li>
+                <li><a href="#simulador-agua">Economia Hídrica</a></li>
+                <li><a href="#cultivo-companheiro">Cultivos</a></li>
+                <li><a href="#diario-bordo">Diário</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <h1>O futuro da agricultura é digital, produtivo e sustentável</h1>
@@ -367,7 +410,6 @@
         </div>
     </section>
 
-    <!-- PRÁTICAS VERDES -->
     <section class="container" id="praticas">
         <h2 class="section-title">Práticas Verdes & Inovação</h2>
         <div class="grid-cards">
@@ -386,26 +428,25 @@
         </div>
     </section>
 
-    <!-- CALCULADORA DE CARBONO (INTERATIVA) -->
     <section class="container" id="calculadora">
         <h2 class="section-title">Calculadora Eco-Agrícola</h2>
         <div class="calculator-box">
             <p style="text-align: center; margin-bottom: 25px; color: var(--gray);">Simule instantaneamente o impacto ambiental estimado da sua operação mecânica mensal e saiba como mitigá-lo.</p>
             
-            <form id="eco-calc">
+            <form id="ecoCalcForm">
                 <div class="form-group">
-                    <label for="prop-size">Tamanho da Propriedade (em hectares):</label>
-                    <input type="number" id="prop-size" min="1" placeholder="Ex: 45" required>
+                    <label for="propArea">Tamanho da Propriedade (em hectares):</label>
+                    <input type="number" id="propArea" min="1" placeholder="Ex: 45" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="fuel-usage">Consumo Mensal de Diesel (Tratores/Máquinas em Litros):</label>
-                    <input type="number" id="fuel-usage" min="0" placeholder="Ex: 500" required>
+                    <label for="fuelConsump">Consumo Mensal de Diesel (Tratores/Máquinas em Litros):</label>
+                    <input type="number" id="fuelConsump" min="0" placeholder="Ex: 500" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="culture-type">Cultura Predominante:</label>
-                    <select id="culture-type">
+                    <label for="cropType">Cultura Predominante:</label>
+                    <select id="cropType">
                         <option value="graos">Grãos (Soja, Milho, Trigo)</option>
                         <option value="hortifruti">Hortifrúti / Orgânicos</option>
                         <option value="perenes">Culturas Perenes (Café, Frutas)</option>
@@ -415,102 +456,15 @@
                 <button type="submit" class="btn btn-secondary" style="width: 100%;">Calcular Pegada Ecológica</button>
             </form>
 
-            <div class="results-box" id="calc-results">
+            <div class="results-box" id="calcResults">
                 <h4>Resultados do Diagnóstico</h4>
-                <p id="emissions-text"></p>
-                <p id="mitigation-text" style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);"></p>
+                <p id="emissionsResult"></p>
+                <p id="recommendationsResult" style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);"></p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-section">
-                <h3>AgroEco Inovação</h3>
-                <p>Democratizando o conhecimento técnico e sustentável para fortalecer o homem do campo e proteger o planeta.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Links Úteis</h3>
-                <ul>
-                    <li><a href="#praticas">Guias de Manejo</a></li>
-                    <li><a href="#calculadora">Calculadora de Carbono</a></li>
-                    <li><a href="#">Termos de Uso</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contato & Suporte</h3>
-                <p>E-mail: suporte@agroecoinovacao.com</p>
-                <p>Telefone: (45) 99999-1234</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 AgroEco Inovação. Todos os direitos reservados. Projeto Semântico HTML5/CSS3/JS.
-        </div>
-    </footer>
-
-    <!-- INTERATIVIDADE JAVASCRIPT -->
-    <script>
-        // --- 1. LÓGICA DO MENU MOBILE (HAMBURGUER) ---
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navList = document.getElementById('nav-list');
-
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-
-        // Fechar o menu ao clicar em um link mobile
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-
-        // --- 2. LÓGICA DA CALCULADORA ECO-AGRÍCOLA ---
-        const calcForm = document.getElementById('eco-calc');
-        const resultsBox = document.getElementById('calc-results');
-        const emissionsText = document.getElementById('emissions-text');
-        const mitigationText = document.getElementById('mitigation-text');
-
-        calcForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Impede o recarregamento da página
-
-            // Coleta de dados dos inputs
-            const hectares = parseFloat(document.getElementById('prop-size').value);
-            const litrosDiesel = parseFloat(document.getElementById('fuel-usage').value);
-            const cultura = document.getElementById('culture-type').value;
-
-            // Fator de emissão médio do diesel: ~2.68 kg de CO2 por litro consumido
-            const co2EmitidoKg = litrosDiesel * 2.68;
-            const co2EmitidoToneladas = (co2EmitidoKg / 1000).toFixed(2);
-
-            // Cálculo simplificado de mitigação (Uma árvore absorve em média 22kg de CO2 por ano)
-            const arvoresNecessarias = Math.ceil(co2EmitidoKg / 22);
-
-            // Geração de recomendações customizadas com base na cultura
-            let dicaCultura = "";
-            if (cultura === 'graos') {
-                dicaCultura = " Recomendamos a adoção imediata do Plantio Direto para aumentar a retenção de carbono no solo.";
-            } else if (cultura === 'hortifruti') {
-                dicaCultura = " O uso de mulching orgânico e adubação verde pode reduzir a necessidade de maquinário pesado nas linhas.";
-            } else {
-                dicaCultura = " Consorciar o seu pomar ou cafezal com leguminosas de cobertura ajudará na fixação natural de nitrogênio.";
-            }
-
-            // Exibição dinâmica dos resultados manipulando o DOM
-            emissionsText.innerHTML = `Sua operação de maquinário emite aproximadamente <strong>${co2EmitidoToneladas} toneladas de CO2</strong> por mês.`;
-            mitigationText.innerHTML = `🌳 Para neutralizar o impacto anual dessa emissão mensal, sugerimos o plantio e manutenção de no mínimo <strong>${arvoresNecessarias} árvores nativas</strong> na sua propriedade.${dicaCultura}`;
-            
-            // Faz a caixa de resultados aparecer com transição suave visual
-            resultsBox.style.display = 'block';
-            
-            // Scroll suave até o resultado para melhorar a UX em telas menores
-            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-    </script>
-</body>
-</html>
-<section class="container" id="simulador-agua">
+    <section class="container" id="simulador-agua">
         <h2 class="section-title">Simulador de Economia Hídrica</h2>
         <div class="interactive-section">
             <form id="waterSimForm">
@@ -572,3 +526,31 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>AgroEco Inovação</h3>
+                <p>Democratizando o conhecimento técnico e sustentável para fortalecer o homem do campo e proteger o planeta.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#praticas">Guias de Manejo</a></li>
+                    <li><a href="#calculadora">Calculadora de Carbono</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato & Suporte</h3>
+                <p>E-mail: suporte@agroecoinovacao.com</p>
+                <p>Telefone: (45) 99999-1234</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AgroEco Inovação. Todos os direitos reservados. Projeto Semântico HTML5/CSS3/JS.
+        </div>
+    </footer>
+
+</body>
+</html>
