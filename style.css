@@ -529,3 +529,38 @@ footer {
         margin: 20px;
     }
 }
+/* ==========================================================================
+   NOVOS ESTILOS (ADICIONAR NO FINAL DO ESTILO ANTIGO)
+   ========================================================================== */
+
+.diary-item {
+    background-color: var(--white);
+    border: 1px solid var(--gray-light);
+    border-left: 5px solid var(--accent);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    position: relative;
+    box-shadow: var(--box-shadow);
+}
+
+.diary-date {
+    font-size: 12px;
+    color: var(--gray-md);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.btn-delete {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #EF5350;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-delete:hover {
+    text-decoration: underline;
+}
