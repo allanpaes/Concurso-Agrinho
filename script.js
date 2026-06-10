@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 3. RECURSO INOVADOR: SISTEMA DE QUIZ DE CONHECIMENTO VERDE ---
-    // Base de dados das perguntas do Quiz estruturada em JSON
     const quizData = [
         {
             question: "Qual das seguintes práticas ajuda a reter o Carbono no solo agrícola?",
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             correct: 1
         },
         {
-            question: "A irrigação por gotejamento automatizada traz qual principal benefício ecológico?",
+            question: "A irrigação por gotejamento automatizada traz qual principal beneficio ecológico?",
             options: [
                 "Aumento da salinização da água subterrânea",
                 "Aplicação precisa de recursos hídricos com redução do desperdício",
@@ -197,9 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
             progressBar.style.width = '0%';
         });
     }
-});
-// ==========================================================================
-    // NOVAS FUNÇÕES JAVASCRIPT (ADICIONAR ANTES DO ÚLTIMO EXTRA }); DO ARQUIVO)
+
+    // ==========================================================================
+    // INTEGRADO CORRETAMENTE DENTRO DO DOMCONTENTLOADED
     // ==========================================================================
 
     // --- NOVA FUNÇÃO: SIMULADOR DE ÁGUA ---
@@ -214,10 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let consumoAtual = system === 'aspersao' ? 6500 : 8500;
             let economiaM3 = (consumoAtual - 4000) * area;
-            let economiaLitros = economiaM3 * 1000;
+            let economyLitros = economiaM3 * 1000;
             let economiaFinanceira = (economiaM3 * 0.45).toFixed(2);
 
-            document.getElementById('waterSavingsText').innerHTML = `Economia anual estimada de <strong>${economiaM3.toLocaleString()} m³</strong> (${economiaLitros.toLocaleString()} litros) de água!`;
+            document.getElementById('waterSavingsText').innerHTML = `Economia anual estimada de <strong>${economiaM3.toLocaleString()} m³</strong> (${economyLitros.toLocaleString()} litros) de água!`;
             document.getElementById('moneySavingsText').innerHTML = `💰 Poupança financeira estimada em energia: R$ ${economiaFinanceira} / ano.`;
             waterResults.style.display = 'block';
         });
@@ -256,9 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let notesArray = JSON.parse(localStorage.getItem('agroNotes')) || [];
 
     function renderNotes() {
+        if (!diaryLogsList) return;
         diaryLogsList.innerHTML = '';
         if (notesArray.length === 0) {
-            diaryLogsList.appendChild(emptyDiaryText);
+            if (emptyDiaryText) diaryLogsList.appendChild(emptyDiaryText);
             return;
         }
         notesArray.forEach((note, index) => {
@@ -295,3 +295,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         renderNotes();
     }
+}); // <--- AGORA SIM, O FECHO DO DOMCONTENTLOADED FICOU NA ÚLTIMA LINHA!
