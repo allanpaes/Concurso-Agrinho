@@ -198,3 +198,100 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// ==========================================================================
+    // NOVAS FUNÇÕES JAVASCRIPT (ADICIONAR ANTES DO ÚLTIMO EXTRA }); DO ARQUIVO)
+    // ==========================================================================
+
+    // --- NOVA FUNÇÃO: SIMULADOR DE ÁGUA ---
+    const waterSimForm = document.getElementById('waterSimForm');
+    const waterResults = document.getElementById('waterResults');
+
+    if (waterSimForm) {
+        waterSimForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const area = parseFloat(document.getElementById('waterArea').value) || 0;
+            const system = document.getElementById('currentSystem').value;
+
+            let consumoAtual = system === 'aspersao' ? 6500 : 8500;
+            let economiaM3 = (consumoAtual - 4000) * area;
+            let economiaLitros = economiaM3 * 1000;
+            let economiaFinanceira = (economiaM3 * 0.45).toFixed(2);
+
+            document.getElementById('waterSavingsText').innerHTML = `Economia anual estimada de <strong>${economiaM3.toLocaleString()} m³</strong> (${economiaLitros.toLocaleString()} litros) de água!`;
+            document.getElementById('moneySavingsText').innerHTML = `💰 Poupança financeira estimada em energia: R$ ${economiaFinanceira} / ano.`;
+            waterResults.style.display = 'block';
+        });
+    }
+
+    // --- NOVA FUNÇÃO: CULTIVO COMPANHEIRO ---
+    const mainCropSelect = document.getElementById('mainCropSelect');
+    const companionResults = document.getElementById('companionResults');
+    const databaseCultivos = {
+        tomate: { title: "Tomate", ideal: "Manjericão e Alho", avoid: "Batata e Milho", benefit: "O manjericão afasta moscas brancas e melhora o sabor." },
+        milho: { title: "Milho", ideal: "Feijão e Abóbora", avoid: "Tomate", benefit: "O feijão fixa nitrogénio e a abóbora retém a humidade do solo." },
+        cenoura: { title: "Cenoura", ideal: "Alecrim e Cebola", avoid: "Anis", benefit: "A cebola confunde a mosca-da-cenoura com o seu odor forte." }
+    };
+
+    if (mainCropSelect) {
+        mainCropSelect.addEventListener('change', () => {
+            const crop = mainCropSelect.value;
+            if (crop && databaseCultivos[crop]) {
+                const data = databaseCultivos[crop];
+                document.getElementById('cropTitle').textContent = data.title;
+                document.getElementById('idealCompanions').textContent = data.ideal;
+                document.getElementById('avoidCrops').textContent = data.avoid;
+                document.getElementById('ecoBenefit').textContent = data.benefit;
+                companionResults.style.display = 'block';
+            } else {
+                companionResults.style.display = 'none';
+            }
+        });
+    }
+
+    // --- NOVA FUNÇÃO: DIÁRIO DE BORDO (LOCALSTORAGE) ---
+    const diaryForm = document.getElementById('diaryForm');
+    const diaryNotes = document.getElementById('diaryNotes');
+    const diaryLogsList = document.getElementById('diaryLogsList');
+    const emptyDiaryText = document.getElementById('emptyDiaryText');
+    let notesArray = JSON.parse(localStorage.getItem('agroNotes')) || [];
+
+    function renderNotes() {
+        diaryLogsList.innerHTML = '';
+        if (notesArray.length === 0) {
+            diaryLogsList.appendChild(emptyDiaryText);
+            return;
+        }
+        notesArray.forEach((note, index) => {
+            const item = document.createElement('div');
+            item.classList.add('diary-item');
+            item.innerHTML = `
+                <div class="diary-date">${note.date}</div>
+                <p style="padding-right: 50px;">${note.text}</p>
+                <button class="btn-delete" data-id="${index}">Apagar</button>
+            `;
+            diaryLogsList.appendChild(item);
+        });
+
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                notesArray.splice(id, 1);
+                localStorage.setItem('agroNotes', JSON.stringify(notesArray));
+                renderNotes();
+            });
+        });
+    }
+
+    if (diaryForm) {
+        diaryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const text = diaryNotes.value.trim();
+            if (!text) return;
+            const timestamp = new Date().toLocaleString('pt-PT');
+            notesArray.unshift({ date: timestamp, text: text });
+            localStorage.setItem('agroNotes', JSON.stringify(notesArray));
+            diaryNotes.value = '';
+            renderNotes();
+        });
+        renderNotes();
+    }
