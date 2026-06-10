@@ -3,202 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroVida - Agricultura Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Agro Sustentabilidade</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> AgroVida</a>
-            <button class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <nav class="nav-menu">
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#sobre" class="nav-link">O que é?</a>
-                <a href="#praticas" class="nav-link">Práticas</a>
-                <a href="#impacto" class="nav-link">Impacto</a>
-                <a href="#galeria" class="nav-link">Galeria</a>
-                <a href="#videos" class="nav-link">Vídeos</a>
-                <a href="#projetos" class="nav-link">Projetos</a>
-                <a href="#dicas" class="nav-link">Dicas</a>
-            </nav>
-        </div>
+    <header>
+        <nav>
+            <h1>🌱 Agro Sustentabilidade</h1>
+
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#tecnologias">Tecnologias</a></li>
+                <li><a href="#educacao">Educação</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="inicio" class="hero-section">
+    <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>Cultivando o Futuro com Consciência</h1>
-            <p>Conheça a agricultura sustentável: a união entre a produção responsável de alimentos e a preservação do nosso planeta.</p>
-            <a href="#sobre" class="btn-primary">Saiba Mais <i class="fa-solid fa-arrow-down"></i></a>
+            <h2>Produzindo Hoje Sem Comprometer o Amanhã</h2>
+            <p>
+                Promovendo práticas agrícolas sustentáveis,
+                inovação tecnológica e educação ambiental.
+            </p>
+
+            <button id="saibaMais">
+                Saiba Mais
+            </button>
         </div>
     </section>
 
-    <section id="sobre" class="about-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>O que é Agricultura Sustentável?</h2>
-                <div class="line"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>A agricultura sustentável é um modelo de produção que garante a segurança alimentar das gerações presentes e futuras, sem comprometer a saúde dos ecossistemas. Ela equilibra três pilares fundamentais: <strong>viabilidade econômica</strong>, <strong>justiça social</strong> e <strong>conservação ambiental</strong>.</p>
-                    <p>Diferente dos métodos agrícolas agressivos, este conceito imita os processos naturais para nutrir a terra, proteger a biodiversidade, evitar a escassez de água e combater as mudanças climáticas.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1463123081488-729f60803564?auto=format&fit=crop&w=600&q=80" alt="Mãos segurando terra com broto">
-                </div>
-            </div>
+    <section class="estatisticas">
+
+        <div class="card">
+            <h3 id="agua">0</h3>
+            <p>Litros de Água Economizados</p>
         </div>
+
+        <div class="card">
+            <h3 id="hectares">0</h3>
+            <p>Hectares Preservados</p>
+        </div>
+
+        <div class="card">
+            <h3 id="produtores">0</h3>
+            <p>Produtores Cadastrados</p>
+        </div>
+
     </section>
 
-    <section id="praticas" class="practices-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>Práticas Agrícolas Sustentáveis</h2>
-                <p>Métodos eficientes que protegem o ecossistema e aumentam a qualidade dos alimentos.</p>
-                <div class="line"></div>
-            </div>
-            <div class="practices-grid">
-                <div class="practice-card">
-                    <i class="fa-solid fa-arrows-spin card-icon"></i>
-                    <h3>Rotação de Culturas</h3>
-                    <p>Alternar espécies vegetais em uma mesma área para quebrar ciclos de pragas e melhorar os nutrientes naturais do solo.</p>
-                </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-droplet card-icon"></i>
-                    <h3>Uso Consciente da Água</h3>
-                    <p>Sistemas modernos como o gotejamento inteligente, que direciona a água direto à raiz, reduzindo o desperdício em até 60%.</p>
-                </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-recycle card-icon"></i>
-                    <h3>Compostagem</h3>
-                    <p>Transformação de resíduos orgânicos e restos de poda em adubo natural rico, eliminando a dependência de fertilizantes químicos.</p>
-                </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-seedling card-icon"></i>
-                    <h3>Agricultura Orgânica</h3>
-                    <p>Cultivo sem defensivos agrícolas sintéticos ou transgênicos, priorizando o equilíbrio biológico e a saúde do consumidor.</p>
-                </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-solar-panel card-icon"></i>
-                    <h3>Energia Renovável</h3>
-                    <p>Uso de painéis solares e biomassa no campo para mover sistemas de irrigação e maquinários de forma limpa.</p>
-                </div>
-                <div class="practice-card">
-                    <i class="fa-solid fa-tree card-icon"></i>
-                    <h3>Preservação do Solo</h3>
-                    <p>Técnicas como o plantio direto sobre a palha e manutenção de matas ciliares para evitar erosões severas e desertificação.</p>
-                </div>
-            </div>
-        </div>
+    <section id="sobre" class="sobre">
+
+        <h2>Sobre o Projeto</h2>
+
+        <p>
+            Nosso objetivo é incentivar a agricultura sustentável
+            através da educação, tecnologia e inovação.
+        </p>
+
     </section>
 
-    <section id="impacto" class="impact-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>O Impacto em Números</h2>
-                <p>Veja os benefícios gerados pela transição para modelos ecológicos no campo.</p>
-                <div class="line"></div>
+    <section id="tecnologias" class="tecnologias">
+
+        <h2>Tecnologias Sustentáveis</h2>
+
+        <div class="cards">
+
+            <div class="tec-card">
+                <h3>☀️ Energia Solar</h3>
+                <p>Redução de custos e impacto ambiental.</p>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3 class="stat-number">-35%</h3>
-                    <p>Emissões de gases de efeito estufa na atmosfera.</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number">+50%</h3>
-                    <p>Aumento da biodiversidade de polinizadores locais.</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number">-60%</h3>
-                    <p>Economia no consumo de água com irrigação automatizada.</p>
-                </div>
-                <div class="stat-card">
-                    <h3 class="stat-number">100%</h3>
-                    <p>Livre de resíduos químicos prejudiciais à saúde.</p>
-                </div>
+
+            <div class="tec-card">
+                <h3>🚁 Drones Agrícolas</h3>
+                <p>Monitoramento inteligente das plantações.</p>
             </div>
+
+            <div class="tec-card">
+                <h3>📡 IoT no Campo</h3>
+                <p>Sensores para solo, temperatura e irrigação.</p>
+            </div>
+
         </div>
+
     </section>
 
-    <section id="galeria" class="gallery-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>Galeria Verde</h2>
-                <div class="line"></div>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=500&q=80" alt="Fazenda ecológica sustentável">
-                    <div class="overlay"><span>Fazendas Ecológicas</span></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&w=500&q=80" alt="Irrigação Inteligente por gotejamento">
-                    <div class="overlay"><span>Irrigação Inteligente</span></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=500&q=80" alt="Plantação orgânica de vegetais">
-                    <div class="overlay"><span>Agricultura Orgânica</span></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=500&q=80" alt="Rotação de culturas e campos verdes">
-                    <div class="overlay"><span>Plantações Diversificadas</span></div>
-                </div>
-            </div>
-        </div>
+    <section id="educacao" class="educacao">
+
+        <h2>Quiz Sustentável</h2>
+
+        <p>
+            Qual prática ajuda a preservar o solo?
+        </p>
+
+        <button onclick="respostaCorreta()">
+            Rotação de Culturas
+        </button>
+
+        <button onclick="respostaErrada()">
+            Desmatamento
+        </button>
+
+        <p id="resultado"></p>
+
     </section>
 
-    <section id="videos" class="videos-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>Vídeos Educativos</h2>
-                <p>Assista a conteúdos selecionados sobre o futuro da produção agrícola.</p>
-                <div class="line"></div>
-            </div>
-            <div class="videos-grid">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/H6Lp_4yH_o0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/7V9B9_77v8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
+    <section id="contato" class="contato">
+
+        <h2>Contato</h2>
+
+        <form>
+
+            <input type="text" placeholder="Nome">
+
+            <input type="email" placeholder="E-mail">
+
+            <textarea placeholder="Mensagem"></textarea>
+
+            <button type="submit">
+                Enviar
+            </button>
+
+        </form>
+
     </section>
 
-    <section id="projetos" class="projects-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>Projetos Reais pelo Mundo</h2>
-                <div class="line"></div>
-            </div>
-            <div class="projects-container">
-                <div class="project-card-real">
-                    <h3>ILPF (Brasil)</h3>
-                    <p>A estratégia de Integração Lavoura-Pecuária-Floresta (ILPF) desenvolvida no Brasil integra diferentes sistemas produtivos em uma mesma área, recuperando solos degradados e neutralizando a emissão de carbono da pecuária tradicional.</p>
-                </div>
-                <div class="project-card-real">
-                    <h3>Fazendas Verticais (Holanda)</h3>
-                    <p>A Holanda tornou-se o segundo maior exportador de alimentos do mundo usando tecnologia de ponta. Suas fazendas verticais e estufas hipertecnológicas usam 90% menos água e eliminam completamente o uso de pesticidas químicos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer>
+        <p>© 2026 Agro Sustentabilidade</p>
+    </footer>
 
-    <section id="dicas" class="tips-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2>Curiosidades & Dicas Práticas</h2>
-                <div class="line"></div>
-            </div>
-            <div class="tips-grid">
-                <div class="tip-box">
-                    <h4><i class="fa-solid fa-lightbulb"></i> Sabia que?</h4>
-                    <p>Uma colher de chá de solo saudável contém mais microrganismos vivos do que pessoas no planeta Terra. Proteger o solo é proteger um universo microscópico vivo!</p>
-                </div>
-                <div class="tip-box">
+    <script src="js/script.js"></script>
+
+</body>
+</html>
