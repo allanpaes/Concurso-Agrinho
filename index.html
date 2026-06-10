@@ -1,1 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroEco Inovação - Sustentabilidade no Campo</title>
+    <style>
+        /* --- VARIÁVEIS DE DESIGN E CORES --- */
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #E8F5E9;
+            --primary-dark: #1B5E20;
+            --secondary: #8D6E63;
+            --secondary-light: #D7CCC8;
+            --dark: #212121;
+            --light: #FAFAFA;
+            --white: #FFFFFF;
+            --accent: #1E88E5;
+            --gray: #757575;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
 
+        /* --- SUCESSO DO RESET E CONFIGURAÇÕES GERAIS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- ACESSIBILIDADE E LAYOUT --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* --- HEADER E NAVEGAÇÃO --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--dark);
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        /* Menu Hamburguer para Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            border-radius: 2px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.8)), url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #1565C0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- SEÇÃO DE CONTEÚDO / CARDS --- */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            font-size: 28px;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 25px;
+            border-top: 5px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* --- FERRAMENTA INTERATIVA: CALCULADORA --- */
+        .calculator-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 40px;
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #DDD;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .results-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary);
+            display: none;
+        }
+
+        .results-box h4 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-light);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                🌱 AgroEco
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="#" class="active">Início</a></li>
+                <li><a href="#praticas">Práticas Verdes</a></li>
+                <li><a href="#calculadora">Calculadora Eco</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>O futuro da agricultura é digital, produtivo e sustentável</h1>
+            <p>Conectando pequenos e médios produtores às melhores tecnologias de preservação ambiental e otimização de safras.</p>
+            <a href="#calculadora" class="btn">Testar Calculadora de Carbono</a>
+        </div>
+    </section>
+
+    <!-- PRÁTICAS VERDES -->
+    <section class="container" id="praticas">
+        <h2 class="section-title">Práticas Verdes & Inovação</h2>
+        <div class="grid-cards">
+            <div class="card">
+                <h3>Manejo Ecológico do Solo</h3>
+                <p>Aprenda técnicas de rotação de culturas, plantio direto e adubação verde para enriquecer o solo sem o uso de defensivos químicos agressivos.</p>
+            </div>
+            <div class="card">
+                <h3>Gestão Inteligente de Água</h3>
+                <p>Implemente sistemas de irrigação por gotejamento automatizados com sensores IoT de baixo custo para economizar até 40% de recursos hídricos.</p>
+            </div>
+            <div class="card">
+                <h3>Sistemas Agroflorestais</h3>
+                <p>Consorcie a produção agrícola com árvores nativas para recuperar a biodiversidade local, criar microclimas ideais e gerar novas fontes de renda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE CARBONO (INTERATIVA) -->
+    <section class="container" id="calculadora">
+        <h2 class="section-title">Calculadora Eco-Agrícola</h2>
+        <div class="calculator-box">
+            <p style="text-align: center; margin-bottom: 25px; color: var(--gray);">Simule instantaneamente o impacto ambiental estimado da sua operação mecânica mensal e saiba como mitigá-lo.</p>
+            
+            <form id="eco-calc">
+                <div class="form-group">
+                    <label for="prop-size">Tamanho da Propriedade (em hectares):</label>
+                    <input type="number" id="prop-size" min="1" placeholder="Ex: 45" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fuel-usage">Consumo Mensal de Diesel (Tratores/Máquinas em Litros):</label>
+                    <input type="number" id="fuel-usage" min="0" placeholder="Ex: 500" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="culture-type">Cultura Predominante:</label>
+                    <select id="culture-type">
+                        <option value="graos">Grãos (Soja, Milho, Trigo)</option>
+                        <option value="hortifruti">Hortifrúti / Orgânicos</option>
+                        <option value="perenes">Culturas Perenes (Café, Frutas)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-secondary" style="width: 100%;">Calcular Pegada Ecológica</button>
+            </form>
+
+            <div class="results-box" id="calc-results">
+                <h4>Resultados do Diagnóstico</h4>
+                <p id="emissions-text"></p>
+                <p id="mitigation-text" style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>AgroEco Inovação</h3>
+                <p>Democratizando o conhecimento técnico e sustentável para fortalecer o homem do campo e proteger o planeta.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#praticas">Guias de Manejo</a></li>
+                    <li><a href="#calculadora">Calculadora de Carbono</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato & Suporte</h3>
+                <p>E-mail: suporte@agroecoinovacao.com</p>
+                <p>Telefone: (45) 99999-1234</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AgroEco Inovação. Todos os direitos reservados. Projeto Semântico HTML5/CSS3/JS.
+        </div>
+    </footer>
+
+    <!-- INTERATIVIDADE JAVASCRIPT -->
+    <script>
+        // --- 1. LÓGICA DO MENU MOBILE (HAMBURGUER) ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Fechar o menu ao clicar em um link mobile
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        // --- 2. LÓGICA DA CALCULADORA ECO-AGRÍCOLA ---
+        const calcForm = document.getElementById('eco-calc');
+        const resultsBox = document.getElementById('calc-results');
+        const emissionsText = document.getElementById('emissions-text');
+        const mitigationText = document.getElementById('mitigation-text');
+
+        calcForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
+
+            // Coleta de dados dos inputs
+            const hectares = parseFloat(document.getElementById('prop-size').value);
+            const litrosDiesel = parseFloat(document.getElementById('fuel-usage').value);
+            const cultura = document.getElementById('culture-type').value;
+
+            // Fator de emissão médio do diesel: ~2.68 kg de CO2 por litro consumido
+            const co2EmitidoKg = litrosDiesel * 2.68;
+            const co2EmitidoToneladas = (co2EmitidoKg / 1000).toFixed(2);
+
+            // Cálculo simplificado de mitigação (Uma árvore absorve em média 22kg de CO2 por ano)
+            const arvoresNecessarias = Math.ceil(co2EmitidoKg / 22);
+
+            // Geração de recomendações customizadas com base na cultura
+            let dicaCultura = "";
+            if (cultura === 'graos') {
+                dicaCultura = " Recomendamos a adoção imediata do Plantio Direto para aumentar a retenção de carbono no solo.";
+            } else if (cultura === 'hortifruti') {
+                dicaCultura = " O uso de mulching orgânico e adubação verde pode reduzir a necessidade de maquinário pesado nas linhas.";
+            } else {
+                dicaCultura = " Consorciar o seu pomar ou cafezal com leguminosas de cobertura ajudará na fixação natural de nitrogênio.";
+            }
+
+            // Exibição dinâmica dos resultados manipulando o DOM
+            emissionsText.innerHTML = `Sua operação de maquinário emite aproximadamente <strong>${co2EmitidoToneladas} toneladas de CO2</strong> por mês.`;
+            mitigationText.innerHTML = `🌳 Para neutralizar o impacto anual dessa emissão mensal, sugerimos o plantio e manutenção de no mínimo <strong>${arvoresNecessarias} árvores nativas</strong> na sua propriedade.${dicaCultura}`;
+            
+            // Faz a caixa de resultados aparecer com transição suave visual
+            resultsBox.style.display = 'block';
+            
+            // Scroll suave até o resultado para melhorar a UX em telas menores
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+    </script>
+</body>
+</html>
