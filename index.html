@@ -510,3 +510,65 @@
     </script>
 </body>
 </html>
+<section class="container" id="simulador-agua">
+        <h2 class="section-title">Simulador de Economia Hídrica</h2>
+        <div class="interactive-section">
+            <form id="waterSimForm">
+                <div class="form-group">
+                    <label for="waterArea">Área Irrigada (Hectares):</label>
+                    <input type="number" id="waterArea" min="0.1" step="0.1" placeholder="Ex: 5" required>
+                </div>
+                <div class="form-group">
+                    <label for="currentSystem">Sistema de Irrigação Atual:</label>
+                    <select id="currentSystem">
+                        <option value="aspersao">Aspersão Convencional (Eficiência Baixa)</option>
+                        <option value="sulco">Inundação / Sulcos (Desperdício Alto)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Simular Economia</button>
+            </form>
+            <div class="results-box" id="waterResults">
+                <h4>💧 Relatório de Otimização de Água</h4>
+                <p id="waterSavingsText"></p>
+                <p id="moneySavingsText" style="margin-top: 10px; font-weight: bold; color: var(--primary-dark);"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="cultivo-companheiro">
+        <h2 class="section-title">Guia de Cultivo Companheiro</h2>
+        <div class="interactive-section">
+            <div class="form-group">
+                <label for="mainCropSelect">Escolha a Cultura Alvo:</label>
+                <select id="mainCropSelect">
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="tomate">Tomate</option>
+                    <option value="milho">Milho</option>
+                    <option value="cenoura">Cenoura</option>
+                </select>
+            </div>
+            <div id="companionResults" style="display: none; margin-top: 25px; padding: 20px; background-color: var(--white); border: 1px solid var(--gray-light); border-radius: var(--border-radius);">
+                <h3 id="cropTitle" style="color: var(--primary-dark); margin-bottom: 15px;"></h3>
+                <p><strong>👍 Companheiras Ideais:</strong> <span id="idealCompanions"></span></p>
+                <p style="margin-top: 10px;"><strong>👎 Evitar Perto:</strong> <span id="avoidCrops"></span></p>
+                <p style="margin-top: 10px; padding: 10px; background: var(--primary-light); border-radius: 6px;"><strong>🌱 Benefício:</strong> <span id="ecoBenefit"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="diario-bordo">
+        <h2 class="section-title">Diário de Bordo do Produtor</h2>
+        <div class="interactive-section">
+            <form id="diaryForm">
+                <div class="form-group">
+                    <label for="diaryNotes">Observação / Manejo Realizado:</label>
+                    <textarea id="diaryNotes" rows="4" style="width:100%; padding:12px; border:2px solid var(--gray-light); border-radius:var(--border-radius); outline:none;" placeholder="Ex: Plantio de adubação verde..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Salvar Registro</button>
+            </form>
+            <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 18px; color: var(--primary-dark);">Histórico</h3>
+            <div id="diaryLogsList" style="display: flex; flex-direction: column; gap: 15px;">
+                <p id="emptyDiaryText" style="text-align: center; color: var(--gray-md); font-style: italic;">Nenhum registro encontrado.</p>
+            </div>
+        </div>
+    </section>
